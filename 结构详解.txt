@@ -1,0 +1,29 @@
+* build: webpack相关配置文件
+  * build.js：生产环境构建
+  * check-versions.js：版本检查
+  * utils.js：构建相关工具
+  * vue-loader.conf.js：加载器配置
+  * webpack.base.conf.js：webpack基础配置（开发、运行共享）
+  * webpack.dev.conf.js：webpack开发环境配置
+  * webpack.prod.conf.js：webpack生产环境配置
+* config:vue基础配置文件
+  * dev.env.js：项目开发环境配置
+  * index.js：项目主要配置（包括监听端口，打包路径等）
+  * prod.env.js：项目生产环境配置
+* node_modules：npm install安装依赖代码库
+* src：项目的核心文件（存放项目源码）
+  * assets：静态资源
+  * components：公共组件
+  * App.vue：根组件，由三部分组成：模板、js、样式
+  * main.js：入口文件
+* static：第三方静态资源
+* .babelrc：babel编译参数
+* .editorconfig：代码格式
+* .eslintignore:忽略语法检查的目录文件
+* .eslintrc.js：eslint的配置文件
+* .gitignore:git上传需要忽略的文件设置
+* .postcssrc.js：转换css工具
+* index.html：主页：一般只定义一个空的根节点，在main.js里面定义的实例将挂载在根节点下，内容通过vue组件来填充。
+* package.json：项目基本信息
+* README.md：项目说明
+

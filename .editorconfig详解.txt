@@ -1,0 +1,6 @@
+* charset：编码
+* indent_style：缩进风格
+* indent_size：缩进大小
+* end_of_line：换行符风格
+insert_final_newline：创建文件，在文件末尾创建新行
+trim_trailing_whitespace：自动移除行尾多余空行
