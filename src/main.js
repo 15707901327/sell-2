@@ -9,6 +9,8 @@ import goods from 'components/goods/goods';
 import ratings from 'components/ratings/ratings';
 import seller from 'components/seller/seller';
 
+import 'common/stylus/index.styl';
+
 /* 关闭生产模式下给出的提示 */
 Vue.config.productionTip = false;
 
