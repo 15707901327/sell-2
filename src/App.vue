@@ -27,9 +27,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import header from './components/header/header';
+  import header from 'components/header/header';
+  import data1 from 'common/js/data.js';
 
-  const ERR_OK = 0;
+  // const ERR_OK = 0;
 
   export default {
     name: 'App',
@@ -39,12 +40,15 @@
       };
     },
     created() {
-      this.$http.get('/api/seller').then(response => {
+      /** 请求后端接口mock数据 **/
+      /* this.$http.get('/api/seller').then(response => {
         response = response.body;
         if (response.errno === ERR_OK) {
           this.seller = response.data;
         }
-      });
+      }); */
+      /** 加载本地json格式数据 */
+      this.seller = data1.seller;
     },
     components: {
       'v-header': header
