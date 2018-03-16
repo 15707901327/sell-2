@@ -5,6 +5,7 @@ import Vue from 'vue';
 // 引入根组件
 import App from './App';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 import goods from 'components/goods/goods';
 import ratings from 'components/ratings/ratings';
 import seller from 'components/seller/seller';
@@ -16,6 +17,7 @@ Vue.config.productionTip = false;
 
 // 给当前应用下所有的组件都注入$Router 和 $route 对象
 Vue.use(VueRouter);
+Vue.use(VueResource);
 
 // 定义各个路由下使用的组件，简称路由组件
 const routes = [
