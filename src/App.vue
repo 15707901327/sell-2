@@ -30,7 +30,7 @@
   import header from 'components/header/header';
   import data1 from 'common/js/data.js';
 
-  // const ERR_OK = 0;
+  const ERR_OK = 0;
 
   export default {
     name: 'App',
@@ -41,14 +41,16 @@
     },
     created() {
       /** 请求后端接口mock数据 **/
-      /* this.$http.get('/api/seller').then(response => {
+      this.$http.get('/api/seller').then(response => {
         response = response.body;
         if (response.errno === ERR_OK) {
           this.seller = response.data;
         }
-      }); */
+      }, (response) => {
+        console.warn('seller数据没有获取到，启用本地默认数据！');
+        this.seller = data1.seller;
+      });
       /** 加载本地json格式数据 */
-      this.seller = data1.seller;
     },
     components: {
       'v-header': header

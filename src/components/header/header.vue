@@ -13,7 +13,7 @@
           {{seller.description}}/{{seller.deliveryTime}}分钟送达
         </div>
         <div v-if="seller.supports" class="support">
-          <span class="icon" :class="classMap[seller.supports[0].type]"></span>
+          <icon :type="seller.supports[0].type" :size="1"></icon>
           <span class="text">{{seller.supports[0].description}}</span>
         </div>
       </div>
@@ -38,6 +38,25 @@
             <div class="star-wrapper">
               <star :size="48" :score="seller.score"></star>
             </div>
+            <div class="title">
+              <div class="line"></div>
+              <div class="text">优惠信息</div>
+              <div class="line"></div>
+            </div>
+            <ul v-if="seller.supports" class="supports">
+              <li class="support-item" v-for="(item,index ) in seller.supports" :key="index">
+                <icon :type="seller.supports[index].type" :size="2"></icon>
+                <span class="text">{{seller.supports[index].description}}</span>
+              </li>
+            </ul>
+            <div class="title">
+              <div class="line"></div>
+              <div class="text">商家公告</div>
+              <div class="line"></div>
+            </div>
+            <div class="bulletin">
+              <p class="content">{{seller.bulletin}}</p>
+            </div>
           </div>
         </div>
         <div class="detail-close" @click="hideDetail">
@@ -50,6 +69,7 @@
 
 <script type="text/ecmascript-6">
   import star from 'components/star/star';
+  import icon from 'components/icon/icon';
 
   export default {
     props: {
@@ -74,7 +94,8 @@
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     },
     components: {
-      star
+      star,
+      icon
     }
   };
 </script>
@@ -119,24 +140,6 @@
           line-height 12px
           font-size 12px
         .support
-          .icon
-            display: inline-block
-            vertical-align top
-            width 12px
-            height 12px
-            margin-right 4px
-            background-size 12px 12px
-            background-repeat no-repeat
-            &.decrease
-              bg-image('decrease_1')
-            &.discount
-              bg-image('discount_1')
-            &.guarantee
-              bg-image('guarantee_1')
-            &.invoice
-              bg-image('invoice_1')
-            &.special
-              bg-image('special_1')
           .text
             line-height 12px
             font-size 10px
@@ -220,6 +223,42 @@
             text-align center
             font-size 16px
             font-weight 700
+          .star-wrapper
+            margin-top 18px
+            padding 2px 0
+            text-align center
+          .title
+            display flex
+            width 80%
+            margin 28px auto 24px auto
+            .line
+              flex 1
+              position relative
+              top -6px
+              border-bottom 1px solid rgba(255, 255, 255, 0.2)
+            .text
+              padding 0 12px
+              font-weight 700
+              font-size 14px
+          .supports
+            width 80%
+            margin 0 auto
+            .support-item
+              padding 0 12px
+              margin-bottom 12px
+              font-size 0
+              &:last-child
+                margin-bottom 0
+              .text
+                line-height 16px
+                font-size 12px
+          .bulletin
+            width 80%
+            margin 0 auto
+            .content
+              padding 0 12px
+              line-height 24px
+              font-size 12px
       .detail-close
         position relative
         width 32px
