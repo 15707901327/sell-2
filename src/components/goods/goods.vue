@@ -108,6 +108,10 @@
       }, (response) => {
         console.warn('goods数据没有获取到，启用本地默认数据！');
         this.goods = data1.goods;
+        this.$nextTick(() => {
+          this._initScroll();
+          this._calculateHeight();
+        });
       });
     },
     methods: {

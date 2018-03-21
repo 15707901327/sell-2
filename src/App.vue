@@ -20,14 +20,18 @@
         <router-link to="/seller">商家</router-link>
       </div>
     </div>
-    <!-- 路由出口-->
-    <!-- 路由匹配到组件将渲染在这里 -->
-    <router-view :seller="seller"></router-view>
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import {urlParse} from 'common/js/util';
   import header from 'components/header/header';
+  import goods from 'components/goods/goods';
   import data1 from 'common/js/data.js';
 
   const ERR_OK = 0;
@@ -36,15 +40,20 @@
     name: 'App',
     data() {
       return {
-        seller: {}
+        seller: {
+          id: (() => {
+            let queryParam = urlParse();
+            return queryParam.id;
+          })()
+        }
       };
     },
     created() {
-      /** 请求后端接口mock数据 **/
-      this.$http.get('/api/seller').then(response => {
+      this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
         response = response.body;
         if (response.errno === ERR_OK) {
-          this.seller = response.data;
+          // this.seller = response.data;
+          this.seller = Object.assign({}, this.seller, response.data);
         }
       }, (response) => {
         console.warn('seller数据没有获取到，启用本地默认数据！');
@@ -53,7 +62,8 @@
       /** 加载本地json格式数据 */
     },
     components: {
-      'v-header': header
+      'v-header': header,
+      'v-goods': goods
     }
   };
 </script>
