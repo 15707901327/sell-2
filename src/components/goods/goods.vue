@@ -4,7 +4,10 @@
       <div class="menu-wrapper">
         <ul>
           <li v-for="(item, index) in goods" class="menu-item" :class="{'current':currentIndex===index}" @click="sellerMenu(index)" :key="index">
-            <span class="text border-1px"><icon :type="item.type" :size="3"></icon>{{item.name}}</span>
+            <span class="text border-1px">
+              <icon :type="item.type" :size="3"></icon>
+              {{item.name}}
+            </span>
           </li>
         </ul>
       </div>
@@ -13,7 +16,7 @@
           <li v-for="(item, index) in goods" class="food-list" ref="food-list-hook" :key="index">
             <h1 class="title">{{item.name}}</h1>
             <ul>
-              <li v-for="(food,index) in item.foods" class="food-item border-1px" :key="index">
+              <li @click="selectFood(food,$event)" v-for="(food,index) in item.foods" class="food-item border-1px" :key="index">
                 <div class="icon">
                   <img width="57" height="57" :src="food.icon"/>
                 </div>
@@ -39,13 +42,15 @@
       </div>
       <shopcart ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
     </div>
+    <food :food="selectedFood" ref="food" @cart-add="cartAdd"></food>
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
   import shopcart from 'components/shopcart/shopcart';
   import cartcontrol from 'components/cartcontrol/cartcontrol';
+  import food from 'components/food/food';
   import data1 from 'common/js/data.js';
   import icon from 'components/icon/icon';
 
@@ -154,7 +159,8 @@
     components: {
       shopcart,
       cartcontrol,
-      icon
+      icon,
+      food
     }
   };
 </script>

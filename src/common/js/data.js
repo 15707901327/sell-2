@@ -73,14 +73,14 @@ let data = {
               'username': '2******3',
               'rateTime': 1469271264000,
               'rateType': 0,
-              'text': '',
+              'text': '不错',
               'avatar': 'http://static.galileo.xiaojukeji.com/static/tms/default_header.png'
             },
             {
               'username': '3******b',
               'rateTime': 1469261964000,
               'rateType': 1,
-              'text': '',
+              'text': '太少',
               'avatar': 'http://static.galileo.xiaojukeji.com/static/tms/default_header.png'
             }
           ],
