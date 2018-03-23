@@ -1,4 +1,4 @@
 实现仿饿了吗app
-1. vue-resource:与后台交互
-2. vue-router:前端路由，做单页应用
-3. better-scroll:
+1. "vue-resource": "^1.5.0":与后台交互
+2.  "vue-router": "^3.0.1":前端路由，做单页应用
+3. "better-scroll": "^1.8.4"

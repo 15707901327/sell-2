@@ -10,6 +10,10 @@
   * dev.env.js：项目开发环境配置
   * index.js：项目主要配置（包括监听端口，打包路径等）
   * prod.env.js：项目生产环境配置
+* dist:打包后的代码
+  * static
+    * js
+      * vendor.js: 放置依赖库中的代码
 * node_modules：npm install安装依赖代码库
 * src：项目的核心文件（存放项目源码）
   * assets：静态资源

@@ -30,7 +30,8 @@ const routes = [
 // 创建实例
 const router = new VueRouter({
   routes, // （缩写）相当于 routes: routes
-  linkActiveClass: 'active'
+  linkActiveClass: 'active',
+  exact: false
 });
 
 // 定义实例,跳过规则

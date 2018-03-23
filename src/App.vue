@@ -7,18 +7,18 @@
   <div id="app">
     <v-header :seller="seller"></v-header>
     <div class="tab border-1px">
-      <div class="tab-item">
-        <!-- 使用 router-link 组件来导航. -->
-        <!-- 通过传入 `to` 属性指定链接. -->
-        <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
-        <router-link to="/goods">商品</router-link>
-      </div>
-      <div class="tab-item">
-        <router-link to="/ratings">评论</router-link>
-      </div>
-      <div class="tab-item">
-        <router-link to="/seller">商家</router-link>
-      </div>
+      <!-- 使用 router-link 组件来导航. -->
+      <!-- 通过传入 `to` 属性指定链接. -->
+      <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+      <router-link tag="div" class="tab-item" to="/goods">
+        <span class="tab-link">商品</span>
+      </router-link>
+      <router-link tag="div" class="tab-item" to="/ratings">
+        <span class="tab-link">评论</span>
+      </router-link>
+      <router-link tag="div" class="tab-item" to="/seller">
+        <span class="tab-link">商家</span>
+      </router-link>
     </div>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 -->
@@ -57,7 +57,7 @@
         }
       }, (response) => {
         console.warn('seller数据没有获取到，启用本地默认数据！');
-        this.seller = data1.seller;
+        this.seller = Object.assign({}, this.seller, data1.seller);
       });
       /** 加载本地json格式数据 */
     },
@@ -81,10 +81,11 @@
       .tab-item
         flex: 1
         text-align: center
-        & > a
+        .tab-link
           display block
           font-size 14px
           color rgb(77, 85, 93)
-          &.active
+        &.active
+          .tab-link
             color rgb(240, 20, 20)
 </style>
